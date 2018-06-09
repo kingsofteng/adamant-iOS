@@ -92,6 +92,8 @@ protocol DialogService: class {
 	func showError(withMessage: String, error: Error?)
     func showNoConnectionNotification()
     func dissmisNoConnectionNotification()
+    func showSyncingIndicator()
+    func dissmisSyncingIndicator()
 	
 	// MARK: - Notifications
 	func showNotification(title: String?, message: String?, image: UIImage?, tapHandler: (() -> Void)?)

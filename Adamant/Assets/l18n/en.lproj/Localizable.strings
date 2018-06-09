@@ -361,6 +361,12 @@
 /* Shared alert notification: body message for no internet connection. */
 "Shared.NoInternet.Body" = "Please check your internet connection and try again";
 
+/* Shared alert notification: title for Syncing. */
+"Shared.SyncingMessage.Title" = "Syncing";
+
+/* Shared alert notification: body message for Syncing. */
+"Shared.SyncingMessage.Body" = "App is syncing data. Please wait.";
+
 /* Shared alert 'Ok' button. Used anywhere */
 "Shared.Ok" = "Ok";
 

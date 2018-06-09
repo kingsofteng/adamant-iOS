@@ -170,6 +170,14 @@ extension AdamantDialogService {
     func dissmisNoConnectionNotification() {
         FTIndicator.dismissNotification()
     }
+    
+    func showSyncingIndicator() {
+        FTIndicator.showNotification(with: #imageLiteral(resourceName: "sync"), title: String.adamantLocalized.alert.syncingMessageTitle, message: String.adamantLocalized.alert.syncingMessageBoby, autoDismiss: false, tapHandler: nil, completion: nil)
+    }
+    
+    func dissmisSyncingIndicator() {
+        FTIndicator.dismissNotification()
+    }
 }
 
 

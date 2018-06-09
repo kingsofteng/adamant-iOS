@@ -37,6 +37,9 @@ extension String {
             static let noInternetNotificationTitle = NSLocalizedString("Shared.NoInternet.Title", comment: "Shared alert notification: title for no internet connection message.")
             static let noInternetNotificationBoby = NSLocalizedString("Shared.NoInternet.Body", comment: "Shared alert notification: body message for no internet connection.")
             
+            static let syncingMessageTitle = NSLocalizedString("Shared.SyncingMessage.Title", comment: "Shared alert notification: title for Syncing.")
+            static let syncingMessageBoby = NSLocalizedString("Shared.SyncingMessage.Body", comment: "Shared alert notification: body message for Syncing.")
+            
             static let emailErrorMessageTitle = NSLocalizedString("Error.Mail.Title", comment: "Error messge title for support email")
             static let emailErrorMessageBody = NSLocalizedString("Error.Mail.Body", comment: "Error messge body for support email")
 			static let emailErrorMessageBodyWithDescription = NSLocalizedString("Error.Mail.Body.Detailed", comment: "Error messge body for support email, with detailed error description. Where first %@ - error's short message, second %@ - detailed description, third %@ - deviceInfo")

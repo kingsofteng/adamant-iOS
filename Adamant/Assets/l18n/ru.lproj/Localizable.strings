@@ -379,6 +379,12 @@
 /* Shared alert notification: body message for no internet connection. */
 "Shared.NoInternet.Body" = "Проверьте соединение и повторите попытку";
 
+/* Shared alert notification: title for Syncing. */
+"Shared.SyncingMessage.Title" = "Синхронизация";
+
+/* Shared alert notification: body message for Syncing. */
+"Shared.SyncingMessage.Body" = "Идет синхронизация данных. Пожалуйста подождите.";
+
 /* Shared alert 'Ok' button. Used anywhere */
 "Shared.Ok" = "Ок";
 

@@ -53,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var repeater: RepeaterService!
 	var container: Container!
+    
+    var isChatsInitialSyncFinished = false
+    var isTransfersInitialSyncFinished = false
 	
 	// MARK: Dependencies
 	var accountService: AccountService!
@@ -171,6 +174,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// MARK: 7. Welcome messages
 		NotificationCenter.default.addObserver(forName: Notification.Name.AdamantChatsProvider.initialSyncFinished, object: nil, queue: OperationQueue.main, using: handleWelcomeMessages)
+        
+        // MARK: 8. Initiona sync indicator
+        NotificationCenter.default.addObserver(forName: Notification.Name.AdamantAccountService.userLoggedIn, object: nil, queue: OperationQueue.main, using: handleInitialSync)
+        NotificationCenter.default.addObserver(forName: Notification.Name.AdamantChatsProvider.initialSyncFinished, object: nil, queue: OperationQueue.main, using: handleInitialSync)
+        NotificationCenter.default.addObserver(forName: Notification.Name.AdamantTransfersProvider.initialSyncFinished, object: nil, queue: OperationQueue.main, using: handleInitialSync)
 		
 		return true
 	}
@@ -349,4 +357,32 @@ extension AppDelegate {
 									  completion: { _ in })
 		}
 	}
+}
+
+extension AppDelegate {
+    private func handleInitialSync(notification: Notification) {
+        
+        switch notification.name {
+        case Notification.Name.AdamantAccountService.userLoggedIn:
+            self.isChatsInitialSyncFinished = false
+            self.isTransfersInitialSyncFinished = false
+            dialogService.showSyncingIndicator()
+            break
+        case Notification.Name.AdamantChatsProvider.initialSyncFinished:
+            self.isChatsInitialSyncFinished = true
+            print("Chats synced")
+            break
+        case Notification.Name.AdamantTransfersProvider.initialSyncFinished:
+            self.isTransfersInitialSyncFinished = true
+            print("Transfers synced")
+            break
+        default:
+            return
+        }
+        
+        if self.isChatsInitialSyncFinished && self.isTransfersInitialSyncFinished {
+            print("Fully synced")
+            dialogService.dissmisSyncingIndicator()
+        }
+    }
 }
