@@ -13,6 +13,8 @@ target 'Adamant' do
   pod 'Haring' # Markdown parser
   pod 'DateToolsSwift' # Date formatter tools
   
+  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
+
   # UI
   pod 'FreakingSimpleRoundImageView' # Round avatars
   pod 'FTIndicator' # Notifications and activity indicator

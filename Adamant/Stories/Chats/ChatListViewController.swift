@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SVGKit
 
 extension String.adamantLocalized {
 	struct chatList {
@@ -256,8 +257,20 @@ extension ChatListViewController {
 				cell.avatarImageView.tintColor = UIColor.adamantPrimary
 				cell.borderWidth = 1
 			} else {
-				cell.avatarImage = nil
-				cell.borderWidth = 0
+                if let seed = partner.address {
+                    DispatchQueue.global().async {
+                        let image = SVGKImage(contentsOf: URL(string: "https://adamant-avatar.herokuapp.com/labs/isogrids/hexa16/\(seed)?theme=adamant1&numcolors=4&size=200&fmt=svg")).uiImage
+                        DispatchQueue.main.async {
+                            cell.avatarImage = image
+                        }
+                    }
+                    
+                    cell.avatarImageView.roundingMode = .round
+                    cell.avatarImageView.clipsToBounds = true
+                } else {
+                    cell.avatarImage = nil
+                    cell.borderWidth = 0
+                }
 			}
 		} else if let title = chatroom.title {
 			cell.accountLabel.text = title
